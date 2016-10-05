@@ -27,7 +27,23 @@ var products = router.get('/getProducts/:id', function(req, res, next) {
 
 var order = router.post('/createOrder', function(req, res, next) {
     log.debug('order data from shopify', req.body);
-    res.send(req.body);
+    console.log('order data from shopify', req.body)
+
+    var createOrderRequest = {
+        SubmitOrdersRequest: {
+            AuthenticationInfo: {
+                UserName: 'test_account_4',
+                Password: 'WineDirect'
+            },
+            AccountNumber: '657076',
+            Orders: {
+                DtcOrder: {
+OrderId:req.data.id
+                }
+            }
+        }
+    }
+    res.status(200).send(req.body);
 });
 
 
