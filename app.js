@@ -9,7 +9,6 @@ var log = log4js.getLogger("app");
 log4js.configure('config/log4js.json');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var orders = require('./routes/orders');
 var wineDirect = require('./routes/wineDirect')
 var app = express();
@@ -27,7 +26,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/orders', orders);
 app.use('/wine', wineDirect)
     // catch 404 and forward to error handler
