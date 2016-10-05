@@ -12,8 +12,7 @@ var products = router.get('/getProducts/:id', function(req, res, next) {
                 UserName: 'test_account_4',
                 Password: 'WineDirect'
             },
-            AccountNumber: '657076',
-            SKU: req.params.id
+            AccountNumber: '657076'
         }
     };
 
@@ -21,9 +20,16 @@ var products = router.get('/getProducts/:id', function(req, res, next) {
         client.GetProducts(getProductsRequest, function(err, result) {
             var productResult = JSON.stringify(result);
             log.debug("product data", productResult);
-            res.render('productResult', { products: productResult });
+            res.send(productResult);
         });
     });
 });
+
+var products = router.post('/createOrder', function(req, res, next) {
+
+log.debug('order data from shopify',req.body);
+
+});
+
 
 module.exports = router;
